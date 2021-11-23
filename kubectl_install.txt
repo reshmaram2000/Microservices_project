@@ -1,0 +1,30 @@
+cd Downloads
+sudo su
+
+sudo apt-get update
+
+sudo apt-get install -y apt-transport-https ca-certificates curl
+
+sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+
+echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+sudo apt-get update
+
+sudo apt-get install -y kubectl
+
+mkdir -p $HOME/.kube
+
+mv config $HOME/.kube
+kubectl version
+kubectl get nodes
+
+
+sudo apt install gnupg2 pass
+
+
+root@lab1:/home/lab1/Downloads# mv config $HOME/.kube
+mv: cannot stat 'config': No such file or directory
+root@lab1:/home/lab1/Downloads# ls
+kubectl_install  kubectl_install.zip  kubenetes_hello_world.txt  kubenetes_node_project.zip  kubenetes_replica_test21.zip
+root@lab1:/home/lab1/Downloads# cd kubectl_install

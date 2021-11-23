@@ -1,0 +1,477 @@
+Steps after the second 'sudo apt-get update'
+------------------------------------------------------------------------------------------------
+
+ain" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main
+root@lab1:/home/lab1/Downloads# sudo apt-get update
+Hit:2 http://dl.google.com/linux/chrome/deb stable InRelease                                                                 
+Hit:3 http://ppa.launchpad.net/openjdk-r/ppa/ubuntu bionic InRelease                                                                                  
+Get:1 https://packages.cloud.google.com/apt kubernetes-xenial InRelease [9,383 B]                                                                     
+Get:4 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 Packages [50.9 kB]
+Hit:5 http://in.archive.ubuntu.com/ubuntu bionic InRelease                    
+Hit:6 http://in.archive.ubuntu.com/ubuntu bionic-updates InRelease      
+Hit:7 http://in.archive.ubuntu.com/ubuntu bionic-backports InRelease     
+Hit:8 http://security.ubuntu.com/ubuntu bionic-security InRelease                                                                                     
+Fetched 60.3 kB in 11s (5,252 B/s)                                                                                                                    
+Reading package lists... Done
+root@lab1:/home/lab1/Downloads# sudo apt-get install -y kubectl
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following NEW packages will be installed:
+  kubectl
+0 upgraded, 1 newly installed, 0 to remove and 685 not upgraded.
+Need to get 9,039 kB of archives.
+After this operation, 46.9 MB of additional disk space will be used.
+Get:1 https://packages.cloud.google.com/apt kubernetes-xenial/main amd64 kubectl amd64 1.22.3-00 [9,039 kB]
+Fetched 9,039 kB in 1s (6,074 kB/s)  
+Selecting previously unselected package kubectl.
+(Reading database ... 191348 files and directories currently installed.)
+Preparing to unpack .../kubectl_1.22.3-00_amd64.deb ...
+Unpacking kubectl (1.22.3-00) ...
+Setting up kubectl (1.22.3-00) ...
+root@lab1:/home/lab1/Downloads# mkdir -p $HOME/.kube
+root@lab1:/home/lab1/Downloads# mv config $HOME/.kube
+mv: cannot stat 'config': No such file or directory
+root@lab1:/home/lab1/Downloads# ls
+kubectl_install  kubectl_install.zip  kubenetes_hello_world.txt  kubenetes_node_project.zip  kubenetes_replica_test21.zip
+root@lab1:/home/lab1/Downloads# cd kubectl_install
+root@lab1:/home/lab1/Downloads/kubectl_install# ls
+commands.txt  config
+root@lab1:/home/lab1/Downloads/kubectl_install# mv config $HOME/.kube
+root@lab1:/home/lab1/Downloads/kubectl_install# kubectl version
+Client Version: version.Info{Major:"1", Minor:"22", GitVersion:"v1.22.3", GitCommit:"c92036820499fedefec0f847e2054d824aea6cd1", GitTreeState:"clean", BuildDate:"2021-10-27T18:41:28Z", GoVersion:"go1.16.9", Compiler:"gc", Platform:"linux/amd64"}
+Server Version: version.Info{Major:"1", Minor:"22", GitVersion:"v1.22.2", GitCommit:"8b5a19147530eaac9476b0ab82980b4088bbc1b2", GitTreeState:"clean", BuildDate:"2021-09-15T21:32:41Z", GoVersion:"go1.16.8", Compiler:"gc", Platform:"linux/amd64"}
+root@lab1:/home/lab1/Downloads/kubectl_install# clear
+
+root@lab1:/home/lab1/Downloads/kubectl_install# kubectl version
+Client Version: version.Info{Major:"1", Minor:"22", GitVersion:"v1.22.3", GitCommit:"c92036820499fedefec0f847e2054d824aea6cd1", GitTreeState:"clean", BuildDate:"2021-10-27T18:41:28Z", GoVersion:"go1.16.9", Compiler:"gc", Platform:"linux/amd64"}
+Server Version: version.Info{Major:"1", Minor:"22", GitVersion:"v1.22.2", GitCommit:"8b5a19147530eaac9476b0ab82980b4088bbc1b2", GitTreeState:"clean", BuildDate:"2021-09-15T21:32:41Z", GoVersion:"go1.16.8", Compiler:"gc", Platform:"linux/amd64"}
+root@lab1:/home/lab1/Downloads/kubectl_install# kubectl get nodes
+NAME           STATUS   ROLES                  AGE   VERSION
+csegpuserver   Ready    control-plane,master   19d   v1.22.2
+root@lab1:/home/lab1/Downloads/kubectl_install# sudo apt install gnupg2 pass
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following additional packages will be installed:
+  dirmngr gnupg gnupg-l10n gnupg-utils gpg gpg-agent gpg-wks-client gpg-wks-server gpgconf gpgsm gpgv libqrencode3 qrencode tree xclip
+Suggested packages:
+  tor parcimonie xloadimage scdaemon ruby
+The following NEW packages will be installed:
+  gnupg2 libqrencode3 pass qrencode tree xclip
+The following packages will be upgraded:
+  dirmngr gnupg gnupg-l10n gnupg-utils gpg gpg-agent gpg-wks-client gpg-wks-server gpgconf gpgsm gpgv
+11 upgraded, 6 newly installed, 0 to remove and 674 not upgraded.
+Need to get 2,294 kB of archives.
+After this operation, 500 kB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://in.archive.ubuntu.com/ubuntu bionic-updates/main amd64 gpg-wks-client amd64 2.2.4-1ubuntu1.4 [91.8 kB]
+Get:2 http://in.archive.ubuntu.com/ubuntu bionic-updates/main amd64 dirmngr amd64 2.2.4-1ubuntu1.4 [316 kB]
+Get:3 http://in.archive.ubuntu.com/ubuntu bionic-updates/main amd64 gnupg-l10n all 2.2.4-1ubuntu1.4 [49.8 kB]
+Get:4 http://in.archive.ubuntu.com/ubuntu bionic-updates/main amd64 gpg amd64 2.2.4-1ubuntu1.4 [467 kB]                                               
+Get:5 http://in.archive.ubuntu.com/ubuntu bionic-updates/main amd64 gnupg-utils amd64 2.2.4-1ubuntu1.4 [128 kB]                                       
+Get:6 http://in.archive.ubuntu.com/ubuntu bionic-updates/main amd64 gpg-agent amd64 2.2.4-1ubuntu1.4 [227 kB]                                         
+Get:6 http://in.archive.ubuntu.com/ubuntu bionic-updates/main amd64 gpg-agent amd64 2.2.4-1ubuntu1.4 [227 kB]                                         
+Get:7 http://in.archive.ubuntu.com/ubuntu bionic-updates/main amd64 gpgsm amd64 2.2.4-1ubuntu1.4 [215 kB]
+Get:8 http://in.archive.ubuntu.com/ubuntu bionic-updates/main amd64 gpgconf amd64 2.2.4-1ubuntu1.4 [123 kB]                                           
+Get:9 http://in.archive.ubuntu.com/ubuntu bionic-updates/main amd64 gnupg amd64 2.2.4-1ubuntu1.4 [249 kB]                                             
+Get:10 http://in.archive.ubuntu.com/ubuntu bionic-updates/main amd64 gpg-wks-server amd64 2.2.4-1ubuntu1.4 [85.0 kB]                                  
+Get:11 http://in.archive.ubuntu.com/ubuntu bionic-updates/main amd64 gpgv amd64 2.2.4-1ubuntu1.4 [198 kB]                                             
+Get:12 http://in.archive.ubuntu.com/ubuntu bionic/universe amd64 libqrencode3 amd64 3.4.4-1build1 [23.9 kB]                                           
+Get:13 http://in.archive.ubuntu.com/ubuntu bionic-updates/universe amd64 gnupg2 all 2.2.4-1ubuntu1.4 [5,292 B]                                        
+Get:14 http://in.archive.ubuntu.com/ubuntu bionic/universe amd64 tree amd64 1.7.0-5 [40.7 kB]                                                         
+Get:15 http://in.archive.ubuntu.com/ubuntu bionic/universe amd64 pass all 1.7.1-3 [36.3 kB]                                                           
+Get:16 http://in.archive.ubuntu.com/ubuntu bionic/universe amd64 qrencode amd64 3.4.4-1build1 [20.4 kB]
+Get:17 http://in.archive.ubuntu.com/ubuntu bionic/main amd64 xclip amd64 0.12+svn84-4build1 [17.5 kB]
+Fetched 2,076 kB in 1min 24s (24.7 kB/s)
+(Reading database ... 191349 files and directories currently installed.)
+Preparing to unpack .../00-gpg-wks-client_2.2.4-1ubuntu1.4_amd64.deb ...
+Unpacking gpg-wks-client (2.2.4-1ubuntu1.4) over (2.2.4-1ubuntu1.2) ...
+Preparing to unpack .../01-dirmngr_2.2.4-1ubuntu1.4_amd64.deb ...
+Unpacking dirmngr (2.2.4-1ubuntu1.4) over (2.2.4-1ubuntu1.2) ...
+Preparing to unpack .../02-gnupg-l10n_2.2.4-1ubuntu1.4_all.deb ...
+Unpacking gnupg-l10n (2.2.4-1ubuntu1.4) over (2.2.4-1ubuntu1.2) ...
+Preparing to unpack .../03-gpg_2.2.4-1ubuntu1.4_amd64.deb ...
+Unpacking gpg (2.2.4-1ubuntu1.4) over (2.2.4-1ubuntu1.2) ...
+Preparing to unpack .../04-gnupg-utils_2.2.4-1ubuntu1.4_amd64.deb ...
+Unpacking gnupg-utils (2.2.4-1ubuntu1.4) over (2.2.4-1ubuntu1.2) ...
+Preparing to unpack .../05-gpg-agent_2.2.4-1ubuntu1.4_amd64.deb ...
+Unpacking gpg-agent (2.2.4-1ubuntu1.4) over (2.2.4-1ubuntu1.2) ...
+Preparing to unpack .../06-gpgsm_2.2.4-1ubuntu1.4_amd64.deb ...
+Unpacking gpgsm (2.2.4-1ubuntu1.4) over (2.2.4-1ubuntu1.2) ...
+Preparing to unpack .../07-gpgconf_2.2.4-1ubuntu1.4_amd64.deb ...
+Unpacking gpgconf (2.2.4-1ubuntu1.4) over (2.2.4-1ubuntu1.2) ...
+Preparing to unpack .../08-gnupg_2.2.4-1ubuntu1.4_amd64.deb ...
+Unpacking gnupg (2.2.4-1ubuntu1.4) over (2.2.4-1ubuntu1.2) ...
+Preparing to unpack .../09-gpg-wks-server_2.2.4-1ubuntu1.4_amd64.deb ...
+Unpacking gpg-wks-server (2.2.4-1ubuntu1.4) over (2.2.4-1ubuntu1.2) ...
+Preparing to unpack .../10-gpgv_2.2.4-1ubuntu1.4_amd64.deb ...
+Unpacking gpgv (2.2.4-1ubuntu1.4) over (2.2.4-1ubuntu1.2) ...
+Setting up gpgv (2.2.4-1ubuntu1.4) ...
+Selecting previously unselected package libqrencode3:amd64.
+(Reading database ... 191349 files and directories currently installed.)
+Preparing to unpack .../0-libqrencode3_3.4.4-1build1_amd64.deb ...
+Unpacking libqrencode3:amd64 (3.4.4-1build1) ...
+Selecting previously unselected package gnupg2.
+Preparing to unpack .../1-gnupg2_2.2.4-1ubuntu1.4_all.deb ...
+Unpacking gnupg2 (2.2.4-1ubuntu1.4) ...
+Selecting previously unselected package tree.
+Preparing to unpack .../2-tree_1.7.0-5_amd64.deb ...
+Unpacking tree (1.7.0-5) ...
+Selecting previously unselected package pass.
+Preparing to unpack .../3-pass_1.7.1-3_all.deb ...
+Unpacking pass (1.7.1-3) ...
+Selecting previously unselected package qrencode.
+Preparing to unpack .../4-qrencode_3.4.4-1build1_amd64.deb ...
+Unpacking qrencode (3.4.4-1build1) ...
+Selecting previously unselected package xclip.
+Preparing to unpack .../5-xclip_0.12+svn84-4build1_amd64.deb ...
+Unpacking xclip (0.12+svn84-4build1) ...
+Setting up tree (1.7.0-5) ...
+Processing triggers for install-info (6.5.0.dfsg.1-2) ...
+Setting up xclip (0.12+svn84-4build1) ...
+Setting up gpgconf (2.2.4-1ubuntu1.4) ...
+Setting up gpg-agent (2.2.4-1ubuntu1.4) ...
+Setting up gnupg-l10n (2.2.4-1ubuntu1.4) ...
+Setting up libqrencode3:amd64 (3.4.4-1build1) ...
+Processing triggers for libc-bin (2.27-3ubuntu1) ...
+Setting up gpgsm (2.2.4-1ubuntu1.4) ...
+Setting up gnupg-utils (2.2.4-1ubuntu1.4) ...
+Processing triggers for man-db (2.8.3-2) ...
+Setting up dirmngr (2.2.4-1ubuntu1.4) ...
+Setting up gpg (2.2.4-1ubuntu1.4) ...
+Setting up qrencode (3.4.4-1build1) ...
+Setting up gpg-wks-server (2.2.4-1ubuntu1.4) ...
+Setting up gpg-wks-client (2.2.4-1ubuntu1.4) ...
+Setting up gnupg (2.2.4-1ubuntu1.4) ...
+Setting up pass (1.7.1-3) ...
+Setting up gnupg2 (2.2.4-1ubuntu1.4) ...
+root@lab1:/home/lab1/Downloads/kubectl_install# kubectl get pods
+No resources found in default namespace.
+root@lab1:/home/lab1/Downloads/kubectl_install# kubectl get nodes
+NAME           STATUS   ROLES                  AGE   VERSION
+csegpuserver   Ready    control-plane,master   19d   v1.22.2
+root@lab1:/home/lab1/Downloads/kubectl_install# kubectl create deployment hello-node124 --image=k8s.gcr.io/echoserver:1.4
+deployment.apps/hello-node124 created
+root@lab1:/home/lab1/Downloads/kubectl_install# kubectl get deployments
+NAME                   READY   UP-TO-DATE   AVAILABLE   AGE
+1ms19cs401             1/1     1            1           80s
+1ms19cs402             1/1     1            1           2m18s
+hello-node             1/1     1            1           5m16s
+hello-node-078         1/1     1            1           55s
+hello-node-084         1/1     1            1           3m30s
+hello-node-095         1/1     1            1           29s
+hello-node-097         1/1     1            1           25s
+hello-node-100         1/1     1            1           10s
+hello-node-104         1/1     1            1           83s
+hello-node-120         1/1     1            1           119s
+hello-node-126         1/1     1            1           57s
+hello-node-135         1/1     1            1           86s
+hello-node-137         1/1     1            1           2m16s
+hello-node-cs134       1/1     1            1           8s
+hello-node080          1/1     1            1           8s
+hello-node106          1/1     1            1           41s
+hello-node110          1/1     1            1           40s
+hello-node123          1/1     1            1           43s
+hello-node124          1/1     1            1           42s
+hello-node125          1/1     1            1           15s
+hello-node128          1/1     1            1           2m42s
+hello-node132          1/1     1            1           3m35s
+hello-node140          1/1     1            1           3m56s
+hello-node142          1/1     1            1           41s
+hello-node144          1/1     1            1           2m54s
+hello-node146          1/1     1            1           8s
+hello-node1896         1/1     1            1           2m16s
+hello-node19cs403      1/1     1            1           43s
+hello-node1ms18cs136   1/1     1            1           39s
+hello-node1ms19cs408   0/1     1            0           0s
+hello-node405          1/1     1            1           21s
+hello-node410          1/1     1            1           32s
+hello-nodehks          1/1     1            1           46s
+node1ms19cs407         1/1     1            1           75s
+root@lab1:/home/lab1/Downloads/kubectl_install# kubectl get pods
+NAME                                    READY   STATUS    RESTARTS   AGE
+1ms19cs401-649858cf8b-w8qcr             1/1     Running   0          2m
+1ms19cs402-67cdc777d7-zj6wd             1/1     Running   0          2m57s
+hello-node-078-65ddfbc4d5-cltbc         1/1     Running   0          95s
+hello-node-084-658d8978b6-s96jw         1/1     Running   0          4m10s
+hello-node-095-6f58df9d5b-f692n         1/1     Running   0          69s
+hello-node-097-b8b887f4-6gknh           1/1     Running   0          65s
+hello-node-100-687f4fc489-x9gb2         1/1     Running   0          50s
+hello-node-104-769974dc6f-rbgzt         1/1     Running   0          2m3s
+hello-node-120-5cb4854cf-spr84          1/1     Running   0          2m39s
+hello-node-126-7f74c854c7-qj6gf         1/1     Running   0          97s
+hello-node-127-6ff4c4d874-w4x9b         1/1     Running   0          4s
+hello-node-135-cffc87997-cljxk          1/1     Running   0          2m6s
+hello-node-137-75fd498695-kmnq8         1/1     Running   0          2m56s
+hello-node-7567d9fdc9-q58jd             1/1     Running   0          5m56s
+hello-node-cs134-c7cc6b44d-8kw2p        1/1     Running   0          48s
+hello-node080-6794b6fb5c-9z5g2          1/1     Running   0          48s
+hello-node086-c46d77f87-dqp9h           1/1     Running   0          8s
+hello-node106-544d5cf784-7k26l          1/1     Running   0          81s
+hello-node110-855477c85f-jbl4m          1/1     Running   0          80s
+hello-node123-c4844c74f-qsn87           1/1     Running   0          83s
+hello-node124-7bffd57f48-r24jv          1/1     Running   0          82s
+hello-node125-5545b4c895-84khc          1/1     Running   0          55s
+hello-node128-7ddf7778b4-msdxt          1/1     Running   0          3m22s
+hello-node132-7c4b79f67-m8pfp           1/1     Running   0          4m15s
+hello-node139-564b55898-477rg           1/1     Running   0          14s
+hello-node140-56f97565f8-d66pl          1/1     Running   0          4m36s
+hello-node142-7fd78dfd88-h9mm5          1/1     Running   0          81s
+hello-node144-85865bc56b-tsj89          1/1     Running   0          3m34s
+hello-node146-7f9cd657bd-r6lrn          1/1     Running   0          48s
+hello-node1896-7d5d9577c7-f9gff         1/1     Running   0          2m56s
+hello-node19cs403-54fd8c59dd-7lfbt      1/1     Running   0          83s
+hello-node1ms18cs136-f54f8dd5c-qnsmg    1/1     Running   0          79s
+hello-node1ms19cs408-67984cc558-8d5m6   1/1     Running   0          40s
+hello-node405-fb84845d6-tnf8d           1/1     Running   0          61s
+hello-node410-5c967fd4dd-7kkc9          1/1     Running   0          71s
+hello-node9130-6d5cf897d6-k6wvr         1/1     Running   0          35s
+hello-nodeapp079-7458c76bc8-mn94m       1/1     Running   0          16s
+hello-nodehks-56dccd89c5-sdhgb          1/1     Running   0          86s
+node1ms19cs407-7fcc69c67b-84zn7         1/1     Running   0          115s
+root@lab1:/home/lab1/Downloads/kubectl_install# kubectl expose deployment hello-node124 --type=LoadBalancer --port=8080
+service/hello-node124 exposed
+root@lab1:/home/lab1/Downloads/kubectl_install# kubectl get services
+NAME                   TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+cs133                  LoadBalancer   10.107.246.87    <pending>     8080:32289/TCP   30s
+hello-node-077         LoadBalancer   10.101.188.225   <pending>     8080:31591/TCP   13s
+hello-node-078         LoadBalancer   10.109.113.53    <pending>     8080:30380/TCP   56s
+hello-node-084         LoadBalancer   10.98.176.189    <pending>     8080:32300/TCP   7m41s
+hello-node-092         LoadBalancer   10.98.134.250    <pending>     8080:32411/TCP   6s
+hello-node-095         LoadBalancer   10.98.222.210    <pending>     8080:31355/TCP   19s
+hello-node-097         LoadBalancer   10.99.98.202     <pending>     8080:31435/TCP   24s
+hello-node-100         LoadBalancer   10.103.127.101   <pending>     9100:32602/TCP   4m9s
+hello-node-104         LoadBalancer   10.98.168.211    <pending>     9104:31279/TCP   5m1s
+hello-node-108         LoadBalancer   10.105.33.144    <pending>     8080:32396/TCP   47s
+hello-node-114         LoadBalancer   10.110.230.53    <pending>     8080:31819/TCP   22s
+hello-node-120         LoadBalancer   10.100.54.236    <pending>     8080:31727/TCP   3m26s
+hello-node-126         LoadBalancer   10.100.54.64     <pending>     9126:30734/TCP   4m57s
+hello-node-127         LoadBalancer   10.100.38.8      <pending>     8080:31826/TCP   2m54s
+hello-node-135         LoadBalancer   10.105.153.60    <pending>     9135:30105/TCP   5m40s
+hello-node-137         LoadBalancer   10.111.138.44    <pending>     9137:32418/TCP   5m43s
+hello-node-cs134       LoadBalancer   10.109.13.173    <pending>     8080:32288/TCP   31s
+hello-node080          LoadBalancer   10.108.100.108   <pending>     8080:32278/TCP   2m27s
+hello-node086          LoadBalancer   10.111.213.80    <pending>     8080:31016/TCP   3m14s
+hello-node089          LoadBalancer   10.108.201.250   <pending>     8080:32062/TCP   25s
+hello-node101          LoadBalancer   10.105.168.154   <pending>     8080:31672/TCP   26s
+hello-node105          LoadBalancer   10.99.175.75     <pending>     9105:30743/TCP   88s
+hello-node106          LoadBalancer   10.108.202.155   <pending>     8080:32722/TCP   23s
+hello-node110          LoadBalancer   10.104.162.81    <pending>     8080:30605/TCP   36s
+hello-node123          LoadBalancer   10.111.221.96    <pending>     9123:31616/TCP   2m57s
+hello-node124          LoadBalancer   10.96.86.87      <pending>     8080:31822/TCP   31s
+hello-node125          LoadBalancer   10.106.160.104   <pending>     8080:30452/TCP   29s
+hello-node128          LoadBalancer   10.108.169.21    <pending>     8080:30085/TCP   74s
+hello-node132          LoadBalancer   10.97.141.169    <pending>     9132:31272/TCP   6m34s
+hello-node139          LoadBalancer   10.101.189.178   <pending>     9139:31757/TCP   3m15s
+hello-node140          LoadBalancer   10.98.164.110    <pending>     8080:31744/TCP   6m59s
+hello-node142          LoadBalancer   10.111.118.1     <pending>     8080:30954/TCP   35s
+hello-node143          LoadBalancer   10.106.39.129    <pending>     8080:32541/TCP   27s
+hello-node144          LoadBalancer   10.103.206.136   <pending>     8080:31431/TCP   20s
+hello-node146          LoadBalancer   10.98.231.91     <pending>     8080:31045/TCP   7s
+hello-node1896         LoadBalancer   10.96.220.44     <pending>     8080:31093/TCP   45s
+hello-node19cs403      LoadBalancer   10.102.230.1     <pending>     8080:30127/TCP   32s
+hello-node1ms18cs136   LoadBalancer   10.108.12.203    <pending>     8080:31764/TCP   25s
+hello-node1ms19cs408   LoadBalancer   10.99.249.192    <pending>     8080:32687/TCP   35s
+hello-node402          LoadBalancer   10.106.244.195   <pending>     8080:31378/TCP   3m34s
+hello-node404          LoadBalancer   10.101.4.216     <pending>     8080:32088/TCP   24s
+hello-node405          LoadBalancer   10.97.21.208     <pending>     8080:31241/TCP   25s
+hello-node410          LoadBalancer   10.108.188.44    <pending>     8080:32036/TCP   13s
+hello-node85           LoadBalancer   10.108.126.86    <pending>     8080:31261/TCP   6s
+hello-node9130         LoadBalancer   10.106.129.135   <pending>     8080:30377/TCP   18s
+hello-nodeapp079       LoadBalancer   10.105.215.205   <pending>     8080:30486/TCP   24s
+hello-nodeapp082       LoadBalancer   10.105.54.54     <pending>     8080:32752/TCP   37s
+hello-nodecs141        LoadBalancer   10.99.160.35     <pending>     8080:31018/TCP   15s
+hello-nodecs145        LoadBalancer   10.103.197.56    <pending>     8080:32538/TCP   14s
+hello-nodehks          LoadBalancer   10.111.78.98     <pending>     8080:30176/TCP   37s
+kubernetes             ClusterIP      10.96.0.1        <none>        443/TCP          19d
+node1ms19cs407         LoadBalancer   10.101.116.86    <pending>     8080:30825/TCP   37s
+root@lab1:/home/lab1/Downloads/kubectl_install# kubectl get services
+NAME                   TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+cs133                  LoadBalancer   10.107.246.87    <pending>     8080:32289/TCP   79s
+hello-node-077         LoadBalancer   10.101.188.225   <pending>     8080:31591/TCP   62s
+hello-node-078         LoadBalancer   10.109.113.53    <pending>     8080:30380/TCP   105s
+hello-node-084         LoadBalancer   10.98.176.189    <pending>     8080:32300/TCP   8m30s
+hello-node-092         LoadBalancer   10.98.134.250    <pending>     8080:32411/TCP   55s
+hello-node-095         LoadBalancer   10.98.222.210    <pending>     8080:31355/TCP   68s
+hello-node-097         LoadBalancer   10.99.98.202     <pending>     8080:31435/TCP   73s
+hello-node-100         LoadBalancer   10.103.127.101   <pending>     9100:32602/TCP   4m58s
+hello-node-104         LoadBalancer   10.98.168.211    <pending>     9104:31279/TCP   5m50s
+hello-node-108         LoadBalancer   10.105.33.144    <pending>     8080:32396/TCP   96s
+hello-node-114         LoadBalancer   10.110.230.53    <pending>     8080:31819/TCP   71s
+hello-node-120         LoadBalancer   10.100.54.236    <pending>     8080:31727/TCP   4m15s
+hello-node-126         LoadBalancer   10.100.54.64     <pending>     9126:30734/TCP   5m46s
+hello-node-127         LoadBalancer   10.100.38.8      <pending>     8080:31826/TCP   3m43s
+hello-node-135         LoadBalancer   10.105.153.60    <pending>     9135:30105/TCP   6m29s
+hello-node-137         LoadBalancer   10.111.138.44    <pending>     9137:32418/TCP   6m32s
+hello-node-cs134       LoadBalancer   10.109.13.173    <pending>     8080:32288/TCP   80s
+hello-node080          LoadBalancer   10.108.100.108   <pending>     8080:32278/TCP   3m16s
+hello-node086          LoadBalancer   10.111.213.80    <pending>     8080:31016/TCP   4m3s
+hello-node089          LoadBalancer   10.108.201.250   <pending>     8080:32062/TCP   74s
+hello-node101          LoadBalancer   10.105.168.154   <pending>     8080:31672/TCP   75s
+hello-node105          LoadBalancer   10.99.175.75     <pending>     9105:30743/TCP   2m17s
+hello-node106          LoadBalancer   10.108.202.155   <pending>     8080:32722/TCP   72s
+hello-node110          LoadBalancer   10.104.162.81    <pending>     8080:30605/TCP   85s
+hello-node123          LoadBalancer   10.111.221.96    <pending>     9123:31616/TCP   3m46s
+hello-node124          LoadBalancer   10.96.86.87      <pending>     8080:31822/TCP   80s
+hello-node125          LoadBalancer   10.106.160.104   <pending>     8080:30452/TCP   78s
+hello-node128          LoadBalancer   10.108.169.21    <pending>     8080:30085/TCP   2m3s
+hello-node132          LoadBalancer   10.97.141.169    <pending>     9132:31272/TCP   7m23s
+hello-node139          LoadBalancer   10.101.189.178   <pending>     9139:31757/TCP   4m4s
+hello-node140          LoadBalancer   10.98.164.110    <pending>     8080:31744/TCP   7m48s
+hello-node142          LoadBalancer   10.111.118.1     <pending>     8080:30954/TCP   84s
+hello-node143          LoadBalancer   10.106.39.129    <pending>     8080:32541/TCP   76s
+hello-node144          LoadBalancer   10.103.206.136   <pending>     8080:31431/TCP   69s
+hello-node146          LoadBalancer   10.98.231.91     <pending>     8080:31045/TCP   56s
+hello-node1896         LoadBalancer   10.96.220.44     <pending>     8080:31093/TCP   94s
+hello-node19cs403      LoadBalancer   10.102.230.1     <pending>     8080:30127/TCP   81s
+hello-node1ms18cs136   LoadBalancer   10.108.12.203    <pending>     8080:31764/TCP   74s
+hello-node1ms19cs408   LoadBalancer   10.99.249.192    <pending>     8080:32687/TCP   84s
+hello-node402          LoadBalancer   10.106.244.195   <pending>     8080:31378/TCP   4m23s
+hello-node404          LoadBalancer   10.101.4.216     <pending>     8080:32088/TCP   73s
+hello-node405          LoadBalancer   10.97.21.208     <pending>     8080:31241/TCP   74s
+hello-node410          LoadBalancer   10.108.188.44    <pending>     8080:32036/TCP   62s
+hello-node85           LoadBalancer   10.108.126.86    <pending>     8080:31261/TCP   55s
+hello-node9130         LoadBalancer   10.106.129.135   <pending>     8080:30377/TCP   67s
+hello-nodeapp079       LoadBalancer   10.105.215.205   <pending>     8080:30486/TCP   73s
+hello-nodeapp082       LoadBalancer   10.105.54.54     <pending>     8080:32752/TCP   86s
+hello-nodecs141        LoadBalancer   10.99.160.35     <pending>     8080:31018/TCP   64s
+hello-nodecs145        LoadBalancer   10.103.197.56    <pending>     8080:32538/TCP   63s
+hello-nodehks          LoadBalancer   10.111.78.98     <pending>     8080:30176/TCP   86s
+hellonode132           LoadBalancer   10.109.107.214   <pending>     8080:30170/TCP   43s
+kubernetes             ClusterIP      10.96.0.1        <none>        443/TCP          19d
+node1ms19cs407         LoadBalancer   10.101.116.86    <pending>     8080:30825/TCP   86s
+root@lab1:/home/lab1/Downloads/kubectl_install# kubectl get services
+NAME                   TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+cs133                  LoadBalancer   10.107.246.87    <pending>     8080:32289/TCP   3m39s
+hello-node             LoadBalancer   10.111.66.113    <pending>     8080:30568/TCP   77s
+hello-node-077         LoadBalancer   10.101.188.225   <pending>     8080:31591/TCP   3m22s
+hello-node-078         LoadBalancer   10.109.113.53    <pending>     8080:30380/TCP   4m5s
+hello-node-083         LoadBalancer   10.101.60.8      <pending>     8080:32391/TCP   103s
+hello-node-084         LoadBalancer   10.98.176.189    <pending>     8080:32300/TCP   10m
+hello-node-092         LoadBalancer   10.98.134.250    <pending>     8080:32411/TCP   3m15s
+hello-node-095         LoadBalancer   10.98.222.210    <pending>     8080:31355/TCP   3m28s
+hello-node-097         LoadBalancer   10.99.98.202     <pending>     8080:31435/TCP   3m33s
+hello-node-100         LoadBalancer   10.103.127.101   <pending>     9100:32602/TCP   7m18s
+hello-node-104         LoadBalancer   10.105.177.90    <pending>     8080:31669/TCP   2m2s
+hello-node-108         LoadBalancer   10.105.33.144    <pending>     8080:32396/TCP   3m56s
+hello-node-114         LoadBalancer   10.110.230.53    <pending>     8080:31819/TCP   3m31s
+hello-node-120         LoadBalancer   10.100.54.236    <pending>     8080:31727/TCP   6m35s
+hello-node-126         LoadBalancer   10.108.216.108   <pending>     8080:31314/TCP   2m5s
+hello-node-127         LoadBalancer   10.100.38.8      <pending>     8080:31826/TCP   6m3s
+hello-node-135         LoadBalancer   10.102.128.25    <pending>     8080:31286/TCP   35s
+hello-node-cs134       LoadBalancer   10.109.13.173    <pending>     8080:32288/TCP   3m40s
+hello-node080          LoadBalancer   10.108.100.108   <pending>     8080:32278/TCP   5m36s
+hello-node086          LoadBalancer   10.111.213.80    <pending>     8080:31016/TCP   6m23s
+hello-node089          LoadBalancer   10.108.201.250   <pending>     8080:32062/TCP   3m34s
+hello-node101          LoadBalancer   10.105.168.154   <pending>     8080:31672/TCP   3m35s
+hello-node102          LoadBalancer   10.108.58.224    <pending>     8080:30513/TCP   24s
+hello-node105          LoadBalancer   10.99.175.75     <pending>     9105:30743/TCP   4m37s
+hello-node106          LoadBalancer   10.108.202.155   <pending>     8080:32722/TCP   3m32s
+hello-node110          LoadBalancer   10.104.162.81    <pending>     8080:30605/TCP   3m45s
+hello-node123          LoadBalancer   10.104.180.5     <pending>     8080:31979/TCP   92s
+hello-node124          LoadBalancer   10.96.86.87      <pending>     8080:31822/TCP   3m40s
+hello-node125          LoadBalancer   10.106.160.104   <pending>     8080:30452/TCP   3m38s
+hello-node128          LoadBalancer   10.108.169.21    <pending>     8080:30085/TCP   4m23s
+hello-node132          LoadBalancer   10.97.141.169    <pending>     9132:31272/TCP   9m43s
+hello-node140          LoadBalancer   10.98.164.110    <pending>     8080:31744/TCP   10m
+hello-node142          LoadBalancer   10.111.118.1     <pending>     8080:30954/TCP   3m44s
+hello-node143          LoadBalancer   10.106.39.129    <pending>     8080:32541/TCP   3m36s
+hello-node144          LoadBalancer   10.103.206.136   <pending>     8080:31431/TCP   3m29s
+hello-node146          LoadBalancer   10.98.231.91     <pending>     8080:31045/TCP   3m16s
+hello-node1896         LoadBalancer   10.96.220.44     <pending>     8080:31093/TCP   3m54s
+hello-node19cs403      LoadBalancer   10.102.230.1     <pending>     8080:30127/TCP   3m41s
+hello-node1ms18cs136   LoadBalancer   10.108.12.203    <pending>     8080:31764/TCP   3m34s
+hello-node1ms19cs408   LoadBalancer   10.99.249.192    <pending>     8080:32687/TCP   3m44s
+hello-node401          LoadBalancer   10.109.202.247   <pending>     8080:31859/TCP   66s
+hello-node402          LoadBalancer   10.106.244.195   <pending>     8080:31378/TCP   6m43s
+hello-node404          LoadBalancer   10.101.4.216     <pending>     8080:32088/TCP   3m33s
+hello-node405          LoadBalancer   10.97.21.208     <pending>     8080:31241/TCP   3m34s
+hello-node410          LoadBalancer   10.108.188.44    <pending>     8080:32036/TCP   3m22s
+hello-node85           LoadBalancer   10.108.126.86    <pending>     8080:31261/TCP   3m15s
+hello-node9130         LoadBalancer   10.106.129.135   <pending>     8080:30377/TCP   3m27s
+hello-nodeapp079       LoadBalancer   10.105.215.205   <pending>     8080:30486/TCP   3m33s
+hello-nodeapp082       LoadBalancer   10.105.54.54     <pending>     8080:32752/TCP   3m46s
+hello-nodecs141        LoadBalancer   10.99.160.35     <pending>     8080:31018/TCP   3m24s
+hello-nodecs145        LoadBalancer   10.103.197.56    <pending>     8080:32538/TCP   3m23s
+hello-nodehks          LoadBalancer   10.111.78.98     <pending>     8080:30176/TCP   3m46s
+hellonode132           LoadBalancer   10.109.107.214   <pending>     8080:30170/TCP   3m3s
+hellonode18cs111       LoadBalancer   10.105.192.142   <pending>     8080:31178/TCP   101s
+kubernetes             ClusterIP      10.96.0.1        <none>        443/TCP          19d
+node1ms19cs407         LoadBalancer   10.101.116.86    <pending>     8080:30825/TCP   3m46s
+root@lab1:/home/lab1/Downloads/kubectl_install# 
+root@lab1:/home/lab1/Downloads/kubectl_install# kubectl delete deployment hello-node
+deployment.apps "hello-node" deleted
+root@lab1:/home/lab1/Downloads/kubectl_install# kubectl delete deployment hello-node124
+deployment.apps "hello-node124" deleted
+root@lab1:/home/lab1/Downloads/kubectl_install# kubedtl delete service hello-node124
+
+Command 'kubedtl' not found, did you mean:
+
+  command 'kubectl' from snap kubectl (1.22.3)
+
+See 'snap info <snapname>' for additional versions.
+
+root@lab1:/home/lab1/Downloads/kubectl_install# kubectl delete service hello-node124
+service "hello-node124" deleted
+root@lab1:/home/lab1/Downloads/kubectl_install# kubectl get services
+NAME                   TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+cs133                  LoadBalancer   10.107.246.87    <pending>     8080:32289/TCP   8m48s
+hello-node             LoadBalancer   10.111.66.113    <pending>     8080:30568/TCP   6m26s
+hello-node-077         LoadBalancer   10.101.188.225   <pending>     8080:31591/TCP   8m31s
+hello-node-078         LoadBalancer   10.109.113.53    <pending>     8080:30380/TCP   9m14s
+hello-node-083         LoadBalancer   10.101.60.8      <pending>     8080:32391/TCP   6m52s
+hello-node-092         LoadBalancer   10.98.134.250    <pending>     8080:32411/TCP   8m24s
+hello-node-095         LoadBalancer   10.98.222.210    <pending>     8080:31355/TCP   8m37s
+hello-node-097         LoadBalancer   10.99.98.202     <pending>     8080:31435/TCP   8m42s
+hello-node-100         LoadBalancer   10.100.49.162    <pending>     8080:30487/TCP   2m58s
+hello-node-104         LoadBalancer   10.105.177.90    <pending>     8080:31669/TCP   7m11s
+hello-node-108         LoadBalancer   10.105.33.144    <pending>     8080:32396/TCP   9m5s
+hello-node-114         LoadBalancer   10.110.230.53    <pending>     8080:31819/TCP   8m40s
+hello-node-120         LoadBalancer   10.100.54.236    <pending>     8080:31727/TCP   11m
+hello-node-126         LoadBalancer   10.108.216.108   <pending>     8080:31314/TCP   7m14s
+hello-node-127         LoadBalancer   10.100.38.8      <pending>     8080:31826/TCP   11m
+hello-node-135         LoadBalancer   10.102.128.25    <pending>     8080:31286/TCP   5m44s
+hello-node-137         LoadBalancer   10.100.211.53    <pending>     8080:31476/TCP   4m48s
+hello-node-139         LoadBalancer   10.96.52.193     <pending>     8080:32480/TCP   4m24s
+hello-node-cs134       LoadBalancer   10.109.13.173    <pending>     8080:32288/TCP   8m49s
+hello-node080          LoadBalancer   10.108.100.108   <pending>     8080:32278/TCP   10m
+hello-node086          LoadBalancer   10.111.213.80    <pending>     8080:31016/TCP   11m
+hello-node089          LoadBalancer   10.108.201.250   <pending>     8080:32062/TCP   8m43s
+hello-node101          LoadBalancer   10.105.168.154   <pending>     8080:31672/TCP   8m44s
+hello-node102          LoadBalancer   10.108.58.224    <pending>     8080:30513/TCP   5m33s
+hello-node103          LoadBalancer   10.108.52.211    <pending>     8080:31632/TCP   3m49s
+hello-node106          LoadBalancer   10.108.202.155   <pending>     8080:32722/TCP   8m41s
+hello-node110          LoadBalancer   10.104.162.81    <pending>     8080:30605/TCP   8m54s
+hello-node113          LoadBalancer   10.109.236.155   <pending>     8080:30653/TCP   74s
+hello-node123          LoadBalancer   10.104.180.5     <pending>     8080:31979/TCP   6m41s
+hello-node125          LoadBalancer   10.106.160.104   <pending>     8080:30452/TCP   8m47s
+hello-node128          LoadBalancer   10.108.169.21    <pending>     8080:30085/TCP   9m32s
+hello-node140          LoadBalancer   10.98.164.110    <pending>     8080:31744/TCP   15m
+hello-node142          LoadBalancer   10.111.118.1     <pending>     8080:30954/TCP   8m53s
+hello-node143          LoadBalancer   10.106.39.129    <pending>     8080:32541/TCP   8m45s
+hello-node146          LoadBalancer   10.98.231.91     <pending>     8080:31045/TCP   8m25s
+hello-node1896         LoadBalancer   10.96.220.44     <pending>     8080:31093/TCP   9m3s
+hello-node19cs403      LoadBalancer   10.102.230.1     <pending>     8080:30127/TCP   8m50s
+hello-node1ms18cs136   LoadBalancer   10.108.12.203    <pending>     8080:31764/TCP   8m43s
+hello-node1ms19cs408   LoadBalancer   10.99.249.192    <pending>     8080:32687/TCP   8m53s
+hello-node400          LoadBalancer   10.105.247.66    <pending>     8080:32329/TCP   5m4s
+hello-node401          LoadBalancer   10.109.202.247   <pending>     8080:31859/TCP   6m15s
+hello-node402          LoadBalancer   10.106.244.195   <pending>     8080:31378/TCP   11m
+hello-node404          LoadBalancer   10.101.4.216     <pending>     8080:32088/TCP   8m42s
+hello-node405          LoadBalancer   10.97.21.208     <pending>     8080:31241/TCP   8m43s
+hello-node410          LoadBalancer   10.108.188.44    <pending>     8080:32036/TCP   8m31s
+hello-node85           LoadBalancer   10.108.126.86    <pending>     8080:31261/TCP   8m24s
+hello-node9130         LoadBalancer   10.106.129.135   <pending>     8080:30377/TCP   8m36s
+hello-nodeapp079       LoadBalancer   10.105.215.205   <pending>     8080:30486/TCP   8m42s
+hello-nodeapp082       LoadBalancer   10.105.54.54     <pending>     8080:32752/TCP   8m55s
+hello-nodecs141        LoadBalancer   10.99.160.35     <pending>     8080:31018/TCP   8m33s
+hello-nodecs145        LoadBalancer   10.103.197.56    <pending>     8080:32538/TCP   8m32s
+hello-nodehks          LoadBalancer   10.111.78.98     <pending>     8080:30176/TCP   8m55s
+hellonode132           LoadBalancer   10.109.107.214   <pending>     8080:30170/TCP   8m12s
+hellonode18cs111       LoadBalancer   10.105.192.142   <pending>     8080:31178/TCP   6m50s
+kubernetes             ClusterIP      10.96.0.1        <none>        443/TCP          19d
+node1ms19cs407         LoadBalancer   10.101.116.86    <pending>     8080:30825/TCP   8m55s
+root@lab1:/home/lab1/Downloads/kubectl_install# 
+

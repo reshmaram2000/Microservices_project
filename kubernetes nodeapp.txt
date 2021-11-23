@@ -1,0 +1,376 @@
+lab1@lab1:~/Downloads/kubenetes_node_project$ ls
+Dockerfile  get_ex1.js  index.html  package.json  to_do_docker_kubernetes.txt
+lab1@lab1:~/Downloads/kubenetes_node_project$ gedit get_ex1.js
+lab1@lab1:~/Downloads/kubenetes_node_project$ npm start
+
+> nodejs-image-demo@1.0.0 start /home/lab1/Downloads/kubenetes_node_project
+> node get_ex1.js
+
+module.js:549
+    throw err;
+    ^
+
+Error: Cannot find module 'express'
+    at Function.Module._resolveFilename (module.js:547:15)
+    at Function.Module._load (module.js:474:25)
+    at Module.require (module.js:596:17)
+    at require (internal/module.js:11:18)
+    at Object.<anonymous> (/home/lab1/Downloads/kubenetes_node_project/get_ex1.js:1:77)
+    at Module._compile (module.js:652:30)
+    at Object.Module._extensions..js (module.js:663:10)
+    at Module.load (module.js:565:32)
+    at tryModuleLoad (module.js:505:12)
+    at Function.Module._load (module.js:497:3)
+
+npm ERR! Linux 4.15.0-72-generic
+npm ERR! argv "/usr/bin/node" "/usr/bin/npm" "start"
+npm ERR! node v8.10.0
+npm ERR! npm  v3.5.2
+npm ERR! code ELIFECYCLE
+npm ERR! nodejs-image-demo@1.0.0 start: `node get_ex1.js`
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the nodejs-image-demo@1.0.0 start script 'node get_ex1.js'.
+npm ERR! Make sure you have the latest version of node.js and npm installed.
+npm ERR! If you do, this is most likely a problem with the nodejs-image-demo package,
+npm ERR! not with npm itself.
+npm ERR! Tell the author that this fails on your system:
+npm ERR!     node get_ex1.js
+npm ERR! You can get information on how to open an issue for this project with:
+npm ERR!     npm bugs nodejs-image-demo
+npm ERR! Or if that isn't available, you can get their info via:
+npm ERR!     npm owner ls nodejs-image-demo
+npm ERR! There is likely additional logging output above.
+
+npm ERR! Please include the following file with any support request:
+npm ERR!     /home/lab1/Downloads/kubenetes_node_project/npm-debug.log
+lab1@lab1:~/Downloads/kubenetes_node_project$ npm install
+nodejs-image-demo@1.0.0 /home/lab1/Downloads/kubenetes_node_project
+`-- express@4.17.1 
+  +-- accepts@1.3.7 
+  | +-- mime-types@2.1.34 
+  | | `-- mime-db@1.51.0 
+  | `-- negotiator@0.6.2 
+  +-- array-flatten@1.1.1 
+  +-- body-parser@1.19.0 
+  | +-- bytes@3.1.0 
+  | +-- http-errors@1.7.2 
+  | | +-- inherits@2.0.3 
+  | | `-- toidentifier@1.0.0 
+  | +-- iconv-lite@0.4.24 
+  | | `-- safer-buffer@2.1.2 
+  | `-- raw-body@2.4.0 
+  +-- content-disposition@0.5.3 
+  +-- content-type@1.0.4 
+  +-- cookie@0.4.0 
+  +-- cookie-signature@1.0.6 
+  +-- debug@2.6.9 
+  | `-- ms@2.0.0 
+  +-- depd@1.1.2 
+  +-- encodeurl@1.0.2 
+  +-- escape-html@1.0.3 
+  +-- etag@1.8.1 
+  +-- finalhandler@1.1.2 
+  | `-- unpipe@1.0.0 
+  +-- fresh@0.5.2 
+  +-- merge-descriptors@1.0.1 
+  +-- methods@1.1.2 
+  +-- on-finished@2.3.0 
+  | `-- ee-first@1.1.1 
+  +-- parseurl@1.3.3 
+  +-- path-to-regexp@0.1.7 
+  +-- proxy-addr@2.0.7 
+  | +-- forwarded@0.2.0 
+  | `-- ipaddr.js@1.9.1 
+  +-- qs@6.7.0 
+  +-- range-parser@1.2.1 
+  +-- safe-buffer@5.1.2 
+  +-- send@0.17.1 
+  | +-- destroy@1.0.4 
+  | +-- mime@1.6.0 
+  | `-- ms@2.1.1 
+  +-- serve-static@1.14.1 
+  +-- setprototypeof@1.1.1 
+  +-- statuses@1.5.0 
+  +-- type-is@1.6.18 
+  | `-- media-typer@0.3.0 
+  +-- utils-merge@1.0.1 
+  `-- vary@1.1.2 
+
+npm WARN nodejs-image-demo@1.0.0 No repository field.
+npm WARN nodejs-image-demo@1.0.0 license should be a valid SPDX license expression
+lab1@lab1:~/Downloads/kubenetes_node_project$ npm start
+
+> nodejs-image-demo@1.0.0 start /home/lab1/Downloads/kubenetes_node_project
+> node get_ex1.js
+
+Example app listening at http://:::8080
+{ first_name: 'Sreya', last_name: 'Salil' }
+Sent data are (GET): first name :Sreya and last name :Salil
+^C
+lab1@lab1:~/Downloads/kubenetes_node_project$ docker build -t nodeapp124 .
+ERRO[0000] failed to dial gRPC: cannot connect to the Docker daemon. Is 'docker daemon' running on this host?: dial unix /var/run/docker.sock: connect: permission denied 
+context canceled
+lab1@lab1:~/Downloads/kubenetes_node_project$ docker build -t nodeapp124 .
+Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post http://%2Fvar%2Frun%2Fdocker.sock/v1.39/build?buildargs=%7B%7D&cachefrom=%5B%5D&cgroupparent=&cpuperiod=0&cpuquota=0&cpusetcpus=&cpusetmems=&cpushares=0&dockerfile=Dockerfile&labels=%7B%7D&memory=0&memswap=0&networkmode=default&rm=1&session=1lro2v02c4mozgrk5h2tnji8j&shmsize=0&t=nodeapp124&target=&ulimits=null&version=1: dial unix /var/run/docker.sock: connect: permission denied
+lab1@lab1:~/Downloads/kubenetes_node_project$ sudo su
+[sudo] password for lab1: 
+root@lab1:/home/lab1/Downloads/kubenetes_node_project# docker build -t nodeapp124 .
+Sending build context to Docker daemon  8.192kB
+Step 1/9 : FROM node:10
+10: Pulling from library/node
+76b8ef87096f: Pull complete 
+2e2bafe8a0f4: Pull complete 
+b53ce1fd2746: Pull complete 
+84a8c1bd5887: Pull complete 
+7a803dc0b40f: Pull complete 
+b800e94e7303: Pull complete 
+0da9fbf60d48: Pull complete 
+04dccde934cf: Pull complete 
+73269890f6fd: Pull complete 
+Digest: sha256:59531d2835edd5161c8f9512f9e095b1836f7a1fcb0ab73e005ec46047384911
+Status: Downloaded newer image for node:10
+ ---> 28dca6642db8
+Step 2/9 : RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
+ ---> Running in efa03f1b2bda
+Removing intermediate container efa03f1b2bda
+ ---> 0d18f34de291
+Step 3/9 : WORKDIR /home/node/app
+ ---> Running in d5e717d892d3
+Removing intermediate container d5e717d892d3
+ ---> 441062dcbe80
+Step 4/9 : COPY package*.json ./
+ ---> 861dce98ea07
+Step 5/9 : USER node
+ ---> Running in b89dbbcbc86d
+Removing intermediate container b89dbbcbc86d
+ ---> e059d4b2e2f2
+Step 6/9 : RUN npm install
+ ---> Running in e5014f25ae80
+npm notice created a lockfile as package-lock.json. You should commit this file.
+npm WARN nodejs-image-demo@1.0.0 No repository field.
+npm WARN nodejs-image-demo@1.0.0 license should be a valid SPDX license expression
+
+added 50 packages from 37 contributors and audited 50 packages in 4.083s
+found 0 vulnerabilities
+
+Removing intermediate container e5014f25ae80
+ ---> 7e55b17a7fdd
+Step 7/9 : COPY --chown=node:node . .
+ ---> 67716e491c55
+Step 8/9 : EXPOSE 8080
+ ---> Running in 3bab5f3bea3c
+Removing intermediate container 3bab5f3bea3c
+ ---> a2a6e9773c69
+Step 9/9 : CMD [ "node", "get_ex1.js" ]
+ ---> Running in 1ec25c15f8f0
+Removing intermediate container 1ec25c15f8f0
+ ---> bc44a1bfdff7
+Successfully built bc44a1bfdff7
+Successfully tagged nodeapp124:latest
+root@lab1:/home/lab1/Downloads/kubenetes_node_project# docker tag nodeapp sreya1805/nodeapp124
+Error response from daemon: No such image: nodeapp:latest
+root@lab1:/home/lab1/Downloads/kubenetes_node_project# docker tag nodeapp124 sreya1805/nodeapp124
+root@lab1:/home/lab1/Downloads/kubenetes_node_project# docker login
+Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
+Username: sreya1805
+Password: 
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+root@lab1:/home/lab1/Downloads/kubenetes_node_project# docker push sreya1805/nodeapp124
+The push refers to repository [docker.io/sreya1805/nodeapp124]
+932e7ffc4fd0: Pushed 
+31560fc06d4e: Pushed 
+5c2c0fa1b4cd: Pushed 
+3045447e6d53: Pushed 
+3ab01e8988bf: Mounted from library/node 
+c98dc9a94132: Mounted from library/node 
+3ffdb7e28503: Mounted from library/node 
+33dd93485756: Mounted from library/node 
+607d71c12b77: Mounted from library/node 
+052174538f53: Mounted from library/node 
+8abfe7e7c816: Mounted from library/node 
+c8b886062a47: Mounted from library/node 
+16fc2e3ca032: Mounted from library/node 
+latest: digest: sha256:890abe6098481d4ddf832c3104bcc73aca4623b0a433b2d0879d72c2cd278393 size: 3048
+root@lab1:/home/lab1/Downloads/kubenetes_node_project# kubectl create deployment nodeapp124 --image=sreya1805/nodeapp124
+deployment.apps/nodeapp124 created
+root@lab1:/home/lab1/Downloads/kubenetes_node_project# kubectl get deployments
+NAME                   READY   UP-TO-DATE   AVAILABLE   AGE
+1ms19cs402             1/1     1            1           26m
+cs133                  1/1     1            1           20m
+hello-node-077         1/1     1            1           21m
+hello-node-078         1/1     1            1           25m
+hello-node-083         1/1     1            1           21m
+hello-node-092         1/1     1            1           23m
+hello-node-095         1/1     1            1           24m
+hello-node-097         1/1     1            1           24m
+hello-node-100         1/1     1            1           14m
+hello-node-104         1/1     1            1           25m
+hello-node-108         1/1     1            1           22m
+hello-node-114         1/1     1            1           22m
+hello-node-120         1/1     1            1           26m
+hello-node-126         1/1     1            1           25m
+hello-node-127         1/1     1            1           23m
+hello-node-137         1/1     1            1           16m
+hello-node-139         1/1     1            1           17m
+hello-node-cs134       1/1     1            1           24m
+hello-node080          1/1     1            1           24m
+hello-node086          1/1     1            1           23m
+hello-node089          1/1     1            1           23m
+hello-node101          1/1     1            1           22m
+hello-node102          1/1     1            1           18m
+hello-node103          1/1     1            1           15m
+hello-node105          1/1     1            1           14m
+hello-node106          1/1     1            1           25m
+hello-node110          1/1     1            1           25m
+hello-node113          1/1     1            1           18m
+hello-node123          1/1     1            1           25m
+hello-node125          1/1     1            1           24m
+hello-node128          1/1     1            1           27m
+hello-node140          1/1     1            1           22m
+hello-node142          1/1     1            1           25m
+hello-node143          1/1     1            1           23m
+hello-node146          1/1     1            1           24m
+hello-node1896         1/1     1            1           26m
+hello-node19cs403      1/1     1            1           25m
+hello-node1ms19cs408   1/1     1            1           24m
+hello-node400          1/1     1            1           17m
+hello-node401          1/1     1            1           17m
+hello-node402          1/1     1            1           23m
+hello-node404          1/1     1            1           22m
+hello-node405          1/1     1            1           24m
+hello-node410          1/1     1            1           24m
+hello-node9130         1/1     1            1           24m
+hello-nodeapp079       1/1     1            1           24m
+hello-nodeapp082       1/1     1            1           21m
+hello-nodecs141        1/1     1            1           21m
+hello-nodecs145        1/1     1            1           22m
+hello-nodehks          1/1     1            1           25m
+hellonode132           1/1     1            1           19m
+hellonode18cs111       1/1     1            1           19m
+nodeapp-137            0/1     1            0           23s
+nodeapp124             0/1     1            0           13s
+root@lab1:/home/lab1/Downloads/kubenetes_node_project# kubectl get pods
+NAME                                    READY   STATUS              RESTARTS   AGE
+1ms19cs402-67cdc777d7-wp7p8             1/1     Running             0          11m
+cs133-54d468547f-4vhbd                  1/1     Running             0          11m
+hello-node-077-69847c4d8-kdg7h          1/1     Running             0          11m
+hello-node-078-65ddfbc4d5-m7gbl         1/1     Running             0          11m
+hello-node-083-595857d99f-mk9lg         1/1     Running             0          11m
+hello-node-092-7c7d49fcd5-xp8jj         1/1     Running             0          11m
+hello-node-095-6f58df9d5b-4w564         1/1     Running             0          11m
+hello-node-097-b8b887f4-ws4zm           1/1     Running             0          11m
+hello-node-100-687f4fc489-cfnh4         1/1     Running             0          11m
+hello-node-104-769974dc6f-9p4xt         1/1     Running             0          11m
+hello-node-108-5588457b89-nbspb         1/1     Running             0          11m
+hello-node-114-69cbf5dbb4-xwtcc         1/1     Running             0          11m
+hello-node-120-5cb4854cf-878nn          1/1     Running             0          11m
+hello-node-126-7f74c854c7-lwq7b         1/1     Running             0          11m
+hello-node-127-6ff4c4d874-j7hqx         1/1     Running             0          11m
+hello-node-137-75fd498695-gf2tx         1/1     Running             0          11m
+hello-node-139-5c4c6fc889-chzkp         1/1     Running             0          11m
+hello-node-cs134-c7cc6b44d-pqdj2        1/1     Running             0          11m
+hello-node080-6794b6fb5c-bt469          1/1     Running             0          11m
+hello-node086-c46d77f87-j9bcn           1/1     Running             0          11m
+hello-node089-6c4996d66-j5hq6           1/1     Running             0          11m
+hello-node101-6b954b8c65-mkzg9          1/1     Running             0          11m
+hello-node102-6ddc498b84-zpk77          1/1     Running             0          11m
+hello-node103-77d55d5c99-k9rzh          1/1     Running             0          11m
+hello-node105-6bbcff654f-2z7lq          1/1     Running             0          11m
+hello-node106-544d5cf784-z2gfl          1/1     Running             0          11m
+hello-node110-855477c85f-nc62z          1/1     Running             0          11m
+hello-node113-6c795d859d-c9r4n          1/1     Running             0          11m
+hello-node123-c4844c74f-rz5d4           1/1     Running             0          11m
+hello-node125-5545b4c895-dd844          1/1     Running             0          11m
+hello-node128-7ddf7778b4-p4fmv          1/1     Running             0          11m
+hello-node140-56f97565f8-wkhzp          1/1     Running             0          11m
+hello-node142-7fd78dfd88-k7drn          1/1     Running             0          11m
+hello-node143-794cd96667-kz9l6          1/1     Running             0          11m
+hello-node146-7f9cd657bd-q67b4          1/1     Running             0          11m
+hello-node1896-7d5d9577c7-rrgsb         1/1     Running             0          11m
+hello-node19cs403-54fd8c59dd-5hqrx      1/1     Running             0          11m
+hello-node1ms19cs408-67984cc558-qcvhx   1/1     Running             0          11m
+hello-node400-c55c6dcdf-ctwkc           1/1     Running             0          11m
+hello-node401-5f8f7cd6c8-lsdzc          1/1     Running             0          11m
+hello-node402-658f476cff-p8n2s          1/1     Running             0          11m
+hello-node404-699859bf65-rgr78          1/1     Running             0          11m
+hello-node405-fb84845d6-fsswm           1/1     Running             0          11m
+hello-node410-5c967fd4dd-qhh7b          1/1     Running             0          11m
+hello-node9130-6d5cf897d6-pdh74         1/1     Running             0          11m
+hello-nodeapp079-7458c76bc8-rwffj       1/1     Running             0          11m
+hello-nodeapp082-6db9fd96dd-grc7w       1/1     Running             0          11m
+hello-nodecs141-6cfccb469f-tkq2r        1/1     Running             0          11m
+hello-nodecs145-6b46f6bb67-vq2pl        1/1     Running             0          11m
+hello-nodehks-56dccd89c5-xjgs5          1/1     Running             0          11m
+hellonode132-69f966654b-5kkb5           1/1     Running             0          11m
+hellonode18cs111-698b7d9c56-xqtz6       1/1     Running             0          11m
+nodeapp-137-6fd594d6b7-m5g75            1/1     Running             0          74s
+nodeapp-5b59c777b7-mzrfl                0/1     ContainerCreating   0          10s
+nodeapp111-5b4877f848-fm2qn             0/1     ContainerCreating   0          3s
+nodeapp124-c94cc9cf9-pqdml              1/1     Running             0          64s
+nodeapp132-686fcd875b-qhkmr             1/1     Running             0          35s
+root@lab1:/home/lab1/Downloads/kubenetes_node_project# kubectl expose deployment nodeapp124 --type=LoadBalancer --port=8080
+service/nodeapp124 exposed
+root@lab1:/home/lab1/Downloads/kubenetes_node_project# kubectl get services
+NAME                   TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+cs133                  LoadBalancer   10.107.246.87    <pending>     8080:32289/TCP   21m
+hello-node             LoadBalancer   10.111.66.113    <pending>     8080:30568/TCP   19m
+hello-node-077         LoadBalancer   10.101.188.225   <pending>     8080:31591/TCP   21m
+hello-node-078         LoadBalancer   10.109.113.53    <pending>     8080:30380/TCP   21m
+hello-node-083         LoadBalancer   10.101.60.8      <pending>     8080:32391/TCP   19m
+hello-node-092         LoadBalancer   10.98.134.250    <pending>     8080:32411/TCP   21m
+hello-node-095         LoadBalancer   10.98.222.210    <pending>     8080:31355/TCP   21m
+hello-node-097         LoadBalancer   10.99.98.202     <pending>     8080:31435/TCP   21m
+hello-node-100         LoadBalancer   10.100.49.162    <pending>     8080:30487/TCP   15m
+hello-node-104         LoadBalancer   10.105.177.90    <pending>     8080:31669/TCP   19m
+hello-node-108         LoadBalancer   10.105.33.144    <pending>     8080:32396/TCP   21m
+hello-node-114         LoadBalancer   10.110.230.53    <pending>     8080:31819/TCP   21m
+hello-node-120         LoadBalancer   10.100.54.236    <pending>     8080:31727/TCP   24m
+hello-node-126         LoadBalancer   10.108.216.108   <pending>     8080:31314/TCP   19m
+hello-node-127         LoadBalancer   10.100.38.8      <pending>     8080:31826/TCP   23m
+hello-node-137         LoadBalancer   10.100.211.53    <pending>     8080:31476/TCP   17m
+hello-node-139         LoadBalancer   10.96.52.193     <pending>     8080:32480/TCP   17m
+hello-node-cs134       LoadBalancer   10.109.13.173    <pending>     8080:32288/TCP   21m
+hello-node080          LoadBalancer   10.108.100.108   <pending>     8080:32278/TCP   23m
+hello-node086          LoadBalancer   10.111.213.80    <pending>     8080:31016/TCP   24m
+hello-node089          LoadBalancer   10.108.201.250   <pending>     8080:32062/TCP   21m
+hello-node101          LoadBalancer   10.105.168.154   <pending>     8080:31672/TCP   21m
+hello-node102          LoadBalancer   10.108.58.224    <pending>     8080:30513/TCP   18m
+hello-node103          LoadBalancer   10.108.52.211    <pending>     8080:31632/TCP   16m
+hello-node106          LoadBalancer   10.108.202.155   <pending>     8080:32722/TCP   21m
+hello-node110          LoadBalancer   10.104.162.81    <pending>     8080:30605/TCP   21m
+hello-node113          LoadBalancer   10.109.236.155   <pending>     8080:30653/TCP   13m
+hello-node123          LoadBalancer   10.104.180.5     <pending>     8080:31979/TCP   19m
+hello-node125          LoadBalancer   10.106.160.104   <pending>     8080:30452/TCP   21m
+hello-node128          LoadBalancer   10.108.169.21    <pending>     8080:30085/TCP   22m
+hello-node140          LoadBalancer   10.98.164.110    <pending>     8080:31744/TCP   27m
+hello-node142          LoadBalancer   10.111.118.1     <pending>     8080:30954/TCP   21m
+hello-node143          LoadBalancer   10.106.39.129    <pending>     8080:32541/TCP   21m
+hello-node146          LoadBalancer   10.98.231.91     <pending>     8080:31045/TCP   21m
+hello-node1896         LoadBalancer   10.96.220.44     <pending>     8080:31093/TCP   21m
+hello-node19cs403      LoadBalancer   10.102.230.1     <pending>     8080:30127/TCP   21m
+hello-node1ms19cs408   LoadBalancer   10.99.249.192    <pending>     8080:32687/TCP   21m
+hello-node400          LoadBalancer   10.105.247.66    <pending>     8080:32329/TCP   17m
+hello-node401          LoadBalancer   10.109.202.247   <pending>     8080:31859/TCP   18m
+hello-node402          LoadBalancer   10.106.244.195   <pending>     8080:31378/TCP   24m
+hello-node404          LoadBalancer   10.101.4.216     <pending>     8080:32088/TCP   21m
+hello-node405          LoadBalancer   10.97.21.208     <pending>     8080:31241/TCP   21m
+hello-node410          LoadBalancer   10.108.188.44    <pending>     8080:32036/TCP   21m
+hello-node9130         LoadBalancer   10.106.129.135   <pending>     8080:30377/TCP   21m
+hello-nodeapp079       LoadBalancer   10.105.215.205   <pending>     8080:30486/TCP   21m
+hello-nodeapp082       LoadBalancer   10.105.54.54     <pending>     8080:32752/TCP   21m
+hello-nodecs141        LoadBalancer   10.99.160.35     <pending>     8080:31018/TCP   21m
+hello-nodecs145        LoadBalancer   10.103.197.56    <pending>     8080:32538/TCP   21m
+hello-nodehks          LoadBalancer   10.111.78.98     <pending>     8080:30176/TCP   21m
+hellonode132           LoadBalancer   10.109.107.214   <pending>     8080:30170/TCP   20m
+hellonode18cs111       LoadBalancer   10.105.192.142   <pending>     8080:31178/TCP   19m
+kubernetes             ClusterIP      10.96.0.1        <none>        443/TCP          19d
+nodeapp-137            LoadBalancer   10.111.192.30    <pending>     8080:32279/TCP   14s
+nodeapp124             LoadBalancer   10.103.7.106     <pending>     8080:30790/TCP   13s
+nodeapp132             LoadBalancer   10.105.130.210   <pending>     8080:31789/TCP   32s
+root@lab1:/home/lab1/Downloads/kubenetes_node_project# 
+

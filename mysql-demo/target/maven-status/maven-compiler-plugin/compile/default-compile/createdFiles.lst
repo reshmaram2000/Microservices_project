@@ -1,0 +1,4 @@
+com\example\mysqldemo\UserRepository.class
+com\example\mysqldemo\MainController.class
+com\example\mysqldemo\MysqlDemoApplication.class
+com\example\mysqldemo\User.class
