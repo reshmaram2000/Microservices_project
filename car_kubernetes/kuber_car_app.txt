@@ -1,0 +1,158 @@
+lab1@lab1:~/Desktop/1ms18cs124/NodeProject$ sudo su
+[sudo] password for lab1: 
+root@lab1:/home/lab1/Desktop/1ms18cs124/NodeProject# docker build -t carnode124-demo .
+Sending build context to Docker daemon   2.07MB
+Step 1/9 : FROM node:10
+ ---> 28dca6642db8
+Step 2/9 : RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
+ ---> Using cache
+ ---> 0d18f34de291
+Step 3/9 : WORKDIR /home/node/app
+ ---> Using cache
+ ---> 441062dcbe80
+Step 4/9 : COPY package*.json ./
+ ---> Using cache
+ ---> 1354e4c77162
+Step 5/9 : USER node
+ ---> Using cache
+ ---> 3ca7d29562aa
+Step 6/9 : RUN npm install
+ ---> Using cache
+ ---> bef10ccf632d
+Step 7/9 : COPY --chown=node:node . .
+ ---> 0340e9e19edd
+Step 8/9 : EXPOSE 8080
+ ---> Running in 4828822f5d4f
+Removing intermediate container 4828822f5d4f
+ ---> 848068f44923
+Step 9/9 : CMD [ "node", "index.js" ]
+ ---> Running in 740a1faaeeba
+Removing intermediate container 740a1faaeeba
+ ---> db77f82ca1bf
+Successfully built db77f82ca1bf
+Successfully tagged carnode124-demo:latest
+root@lab1:/home/lab1/Desktop/1ms18cs124/NodeProject# docker logout
+Removing login credentials for https://index.docker.io/v1/
+root@lab1:/home/lab1/Desktop/1ms18cs124/NodeProject# docker login
+Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
+Username: sreya1805
+Password: 
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+root@lab1:/home/lab1/Desktop/1ms18cs124/NodeProject# docker tag carnode124-demo sreya1805/carnode124-demo
+root@lab1:/home/lab1/Desktop/1ms18cs124/NodeProject# docker push sreya1805/carnode124-demo
+Using default tag: latest
+The push refers to repository [docker.io/sreya1805/carnode124-demo]
+b34ba5fbe064: Pushed 
+895ca06d881b: Pushed 
+c5d77f5247a4: Pushed 
+3045447e6d53: Mounted from sreya1805/mynode124-demo 
+3ab01e8988bf: Mounted from sreya1805/mynode124-demo 
+c98dc9a94132: Mounted from sreya1805/mynode124-demo 
+3ffdb7e28503: Mounted from sreya1805/mynode124-demo 
+33dd93485756: Mounted from sreya1805/mynode124-demo 
+607d71c12b77: Mounted from sreya1805/mynode124-demo 
+052174538f53: Mounted from sreya1805/mynode124-demo 
+8abfe7e7c816: Mounted from sreya1805/mynode124-demo 
+c8b886062a47: Mounted from sreya1805/mynode124-demo 
+16fc2e3ca032: Mounted from sreya1805/mynode124-demo 
+latest: digest: sha256:d3e26c6bfcd30ced16419f0b3ed97a460adfd5130a6c60d2e2f844d810efae44 size: 3050
+root@lab1:/home/lab1/Desktop/1ms18cs124/NodeProject# kubectl apply -f deploy.yaml
+deployment.apps/carnode124-demo created
+service/carnode124-demo created
+root@lab1:/home/lab1/Desktop/1ms18cs124/NodeProject# kubectl get pods 
+NAME                                 READY   STATUS              RESTARTS         AGE
+1ms18cs135-demo-5c74f9f77c-4928n     1/1     Running             0                21m
+1ms18cs135-demo-5c74f9f77c-m499w     1/1     Running             0                21m
+app081-5f58f47655-2kl78              0/1     ErrImagePull        0                17m
+app091-54c59d646d-544hx              1/1     Running             0                25m
+app095-d95f8b599-5rqsd               0/1     CrashLoopBackOff    3 (35s ago)      99s
+app097-7c7dd484cc-5h9h4              1/1     Running             0                23m
+app114-79fbb6d54f-jnx9l              1/1     Running             0                46m
+app139-678d9cc7f8-86c2q              1/1     Running             0                55m
+carnode124-demo-756d858bdb-5txn9     0/1     ContainerCreating   0                11s
+carnode124-demo-756d858bdb-8m6mm     0/1     ContainerCreating   0                11s
+cs077-97d77c887-kgxrm                1/1     Running             0                6m24s
+cs077-97d77c887-rmj6h                1/1     Running             0                6m24s
+cs134-nodeapp-b4d5f8789-bbw9b        1/1     Running             0                18m
+cs134-nodeapp-b4d5f8789-lmwkl        1/1     Running             0                18m
+example-67558755fd-wlc6p             1/1     Running             0                10m
+feedback-5fcb5959c5-jnpn2            1/1     Running             0                8m56s
+mynode-cs134-6874987f5b-48c2c        1/1     Running             0                29m
+mynode-cs134-6874987f5b-b9tlp        1/1     Running             0                29m
+mynode-demo-fbb7c9c46-t5sq4          1/1     Running             0                62m
+mynode-demo-fbb7c9c46-wzz62          1/1     Running             0                62m
+mynode100-5d7c47dd78-6bjlh           1/1     Running             0                19s
+mynode100-5d7c47dd78-cvkbj           1/1     Running             0                19s
+mynode102-5bffb86fbc-m4scj           1/1     Running             0                45m
+mynode102-5bffb86fbc-npd5h           1/1     Running             0                45m
+mynode400-demo-7c59cbfdcc-92mk6      0/1     ImagePullBackOff    0                65m
+mynode400-demo-7c59cbfdcc-t46bb      0/1     ImagePullBackOff    0                65m
+mynode408-demo-696566c8c4-lzm9x      0/1     ImagePullBackOff    0                33m
+mynode408-demo-696566c8c4-v982h      0/1     ImagePullBackOff    0                33m
+mynode408-demo-757478d4b7-q878j      0/1     ImagePullBackOff    0                25m
+node093-5fb5858485-kt6g9             1/1     Running             0                17m
+node093-5fb5858485-qwswf             1/1     Running             0                17m
+node143-6794b7db5d-xpnws             1/1     Running             0                11m
+nodeapp-084-597689465c-xhbbp         1/1     Running             0                28m
+nodeapp-65674c4b66-q9j8x             1/1     Running             0                52m
+nodeapp0086-7d8869bffb-8b5hb         0/1     ErrImagePull        11 (6m11s ago)   38m
+nodeapp078-d787c597c-7gbvg           0/1     CrashLoopBackOff    5 (5m20s ago)    8m34s
+nodeapp101-c69bd4467-4dlz2           1/1     Running             0                65m
+nodeapp109-f5cb548c6-r9pdz           1/1     Running             0                52m
+nodeapp111-5b4877f848-5kcnc          1/1     Running             0                57m
+nodeapp111-5b4877f848-bkjg4          1/1     Running             0                57m
+nodeapp116-dddf9685-vf8f8            1/1     Running             0                29m
+nodeapp118-576777f77b-h9tcr          1/1     Running             0                32m
+nodeapp119-7bffdb487-f7h5x           1/1     Running             0                23m
+nodeapp126-7d86f5cd46-w4fsp          1/1     Running             0                32m
+nodeapp132-686fcd875b-mrcxd          1/1     Running             0                71m
+nodeapp132-686fcd875b-nq27h          1/1     Running             0                71m
+nodeapp18-6d4676b8d9-b62f4           1/1     Running             0                13m
+nodeapp19408-576745b58d-rqljj        1/1     Running             0                55m
+nodeapp4034-58b478f479-ngnhv         0/1     ImagePullBackOff    0                29m
+nodeapp408-85f7c98f54-6hcf8          1/1     Running             0                73m
+tekion-7d86cb86d6-kq9rb              1/1     Running             0                35s
+test-node-app-104-7f6b95d865-c6qs7   0/1     CrashLoopBackOff    13 (75s ago)     43m
+root@lab1:/home/lab1/Desktop/1ms18cs124/NodeProject# kubectl get svc
+NAME                TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)           AGE
+app081              LoadBalancer   10.103.48.248    <pending>     8080:32070/TCP    16m
+app091              LoadBalancer   10.103.5.79      <pending>     8080:32420/TCP    24m
+app097              LoadBalancer   10.96.8.244      <pending>     8080:31676/TCP    19m
+app114              LoadBalancer   10.104.127.73    <pending>     8080:32505/TCP    33m
+app139              LoadBalancer   10.104.148.3     <pending>     8080:31303/TCP    50m
+carnode124-demo     NodePort       10.101.217.78    <none>        8080:30124/TCP    52s
+cs077               NodePort       10.106.128.36    <none>        8080:30077/TCP    7m5s
+cs134-nodeapp       NodePort       10.105.219.165   <none>        8080:31341/TCP    18m
+example             LoadBalancer   10.108.218.74    <pending>     8080:32247/TCP    9m55s
+feedback            LoadBalancer   10.108.203.209   <pending>     8080:32080/TCP    7m59s
+kubernetes          ClusterIP      10.96.0.1        <none>        443/TCP           100m
+mynode-102          NodePort       10.108.237.76    <none>        8080:30102/TCP    46m
+mynode-cs134        NodePort       10.106.78.189    <none>        8080:31340/TCP    25m
+mynode-demo         NodePort       10.111.36.233    <none>        8080:30100/TCP    30m
+mynode400-demo      NodePort       10.108.8.224     <none>        8080:30400/TCP    65m
+mynode408-demo      NodePort       10.105.205.163   <none>        8080:30408/TCP    25m
+node093             NodePort       10.110.111.150   <none>        8080:30093/TCP    17m
+node143             LoadBalancer   10.110.92.229    <pending>     8080:31803/TCP    10m
+nodeapp-084         LoadBalancer   10.101.176.52    <pending>     8080:30683/TCP    28m
+nodeapp0086         LoadBalancer   10.106.212.144   <pending>     8080:32753/TCP    38m
+nodeapp078          LoadBalancer   10.98.39.166     <pending>     8080:31514/TCP    7m57s
+nodeapp101          LoadBalancer   10.103.146.19    <pending>     8080:30804/TCP    65m
+nodeapp109          LoadBalancer   10.99.124.245    <pending>     8080:31609/TCP    50m
+nodeapp111          NodePort       10.96.213.228    <none>        8080:30111/TCP    57m
+nodeapp116          LoadBalancer   10.105.165.66    <pending>     8080:30044/TCP    29m
+nodeapp118          LoadBalancer   10.101.245.103   <pending>     8080:31030/TCP    32m
+nodeapp119          LoadBalancer   10.105.96.199    <pending>     8080:30520/TCP    24m
+nodeapp126          LoadBalancer   10.103.62.137    <pending>     8080:30064/TCP    32m
+nodeapp132          NodePort       10.97.81.96      <none>        8080:30132/TCP    71m
+nodeapp18           LoadBalancer   10.111.137.146   <pending>     8080:32660/TCP    13m
+nodeapp19408        LoadBalancer   10.99.134.2      <pending>     8080:31370/TCP    55m
+nodeapp4034         LoadBalancer   10.96.204.180    <pending>     60403:31807/TCP   28m
+nodeapp408          LoadBalancer   10.103.56.182    <pending>     8080:30148/TCP    72m
+tekion              LoadBalancer   10.109.39.101    <pending>     8080:32085/TCP    48s
+test-node-app-104   LoadBalancer   10.106.123.88    <pending>     8080:31505/TCP    42m
+root@lab1:/home/lab1/Desktop/1ms18cs124/NodeProject# 
+
